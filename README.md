@@ -2,7 +2,7 @@
 
 ## Installation
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
+To clone and run this repository you'll need [Git](https://git- scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
 
 __First you need to [build the angular application](https://github.com/LINCnil/pia#build) and copy the `dist` directory to the root of the PIA Electron Application.__
 
