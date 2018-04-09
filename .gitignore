@@ -2,7 +2,5 @@
 dist/
 node_modules/
 private/
-# releases/
-releases/.cache
-releases/win*
+releases/
 *.log
