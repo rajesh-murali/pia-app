@@ -1,0 +1,9 @@
+version: 1.6.2
+files:
+  - url: PIA-Setup-1.6.2.exe
+    sha512: gjoY7bn0xD+APnIjXKONixQgqeWP/tSkU5SOQfoWlZmHBaOM+b5+njAN4M9xgN7vksznHBXDwSJLPLNnk7zSZw==
+    size: 87634600
+path: PIA-Setup-1.6.2.exe
+sha512: gjoY7bn0xD+APnIjXKONixQgqeWP/tSkU5SOQfoWlZmHBaOM+b5+njAN4M9xgN7vksznHBXDwSJLPLNnk7zSZw==
+sha2: 05a9ebe37c0d297e621c81ff67e7254878d2fbbce66406c5098e4e2778454f6d
+releaseDate: '2018-04-09T18:59:58.926Z'

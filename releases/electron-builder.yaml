@@ -1,0 +1,19 @@
+directories:
+  output: releases
+  buildResources: .
+appId: com.atnos.pia
+mac:
+  publish:
+    - github
+  category: public.app.category.productivity
+win:
+  publish:
+    - github
+  certificateFile: private/atnos.pfx
+  verifyUpdateCodeSignature: false
+  publisherName: ATNOS
+linux:
+  publish:
+    - github
+  category: Network
+electronVersion: 1.8.2
