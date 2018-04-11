@@ -1,38 +1,43 @@
-# PIA Electron Application
+# Le logiciel PIA / The PIA Software
+<img src="https://raw.githubusercontent.com/LINCnil/pia/develop/src/assets/images/pia-auth-logo.png" align="left" hspace="10" vspace="6"> Le logiciel PIA est un outil distribué librement par la [CNIL](https://www.cnil.fr/fr/outil-pia-telechargez-et-installez-le-logiciel-de-la-cnil) afin de faciliter la réalisation d’analyses d’impact sur la protection des données prévues par le RGPD.
+Application Electron permettant de lancer l’outil PIA sur son ordinateur.
+
+The PIA software is a free tool published by the [CNIL](https://www.cnil.fr/en/open-source-pia-software-helps-carry-out-data-protection-impact-assesment) which aims to help data controllers build and demonstrate compliance to the GDPR. 
+Electron application to launch the PIA tool on your computer. 
 
 ## Installation
 
-To clone and run this repository you'll need [Git](https://git- scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer.
+To clone and run this repository you'll need [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/download/) and [yarn](https://yarnpkg.com) installed on your computer.
 
 __First you need to [build the angular application](https://github.com/LINCnil/pia#build) and copy the `dist` directory to the root of the PIA Electron Application.__
 
 From your command line:
 
 ```bash
-npm install -g electron
+yarn global add electron
 # Clone this repository
 git clone https://github.com/LINCnil/pia-app
 # Go into the repository
 cd pia-app
 # Install dependencies (You can use YARN instead of npm install)
-npm install
+yarn install
 # Run the app
-npm start
+yarn start
 ```
 
 ## For distribution
 
 Install electron-builder:
 
-`npm install -g electron-builder`
+`yarn global add electron-builder`
 
 Build with the command:
 
-For MacOs users: `npm run mac`
+For MacOs users: `yarn run mac`
 
-For GNU/Linux users: `npm run linux`
+For GNU/Linux users: `yarn run linux`
 
-For Windows users: `npm run win`
+For Windows users: `yarn run win`
 
 Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
