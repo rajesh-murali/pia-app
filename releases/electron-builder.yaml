@@ -16,4 +16,4 @@ linux:
   publish:
     - github
   category: Network
-electronVersion: 1.8.2
+electronVersion: 1.8.4

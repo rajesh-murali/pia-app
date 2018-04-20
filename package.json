@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
@@ -34,7 +34,7 @@
       "publish": [
         "github"
       ],
-      "certificateFile": "private/atnos.pfx",
+
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
     },
@@ -52,6 +52,6 @@
   },
   "devDependencies": {
     "electron": "~1.8.4",
-    "electron-builder": "~20.8.1"
+    "electron-builder": "~20.10.0"
   }
 }

@@ -10,7 +10,6 @@ win:
   target: nsis
   publish:
     - github
-  certificateFile: private/atnos.pfx
   verifyUpdateCodeSignature: false
   publisherName: ATNOS
 linux:
