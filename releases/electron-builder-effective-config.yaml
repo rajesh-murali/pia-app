@@ -20,4 +20,4 @@ nsis:
   oneClick: false
   perMachine: true
   allowToChangeInstallationDirectory: true
-electronVersion: 1.8.4
+electronVersion: 1.8.6
