@@ -34,7 +34,6 @@
       "publish": [
         "github"
       ],
-
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
     },
@@ -51,7 +50,7 @@
     }
   },
   "devDependencies": {
-    "electron": "~1.8.6",
-    "electron-builder": "~20.11.1"
+    "electron": "^2.0.1",
+    "electron-builder": "^20.13.4"
   }
 }
