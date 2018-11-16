@@ -9,7 +9,8 @@
     "win": "electron-builder -w --x64 --ia32",
     "linux": "electron-builder -l",
     "win-cert": "electron-builder create-self-signed-cert -p atnos",
-    "publish-to-github": "electron-builder build -mwl --x64 --ia32 -p onTagOrDraft"
+    "publish-to-github": "electron-builder build -mwl --x64 --ia32 -p onTagOrDraft",
+    "clean": "rimraf ./dist/"
   },
   "author": "ATNOS",
   "repository": "https://github.com/LINCnil/pia-app",
@@ -50,7 +51,8 @@
     }
   },
   "devDependencies": {
-    "electron": "^3.0.8",
-    "electron-builder": "^20.34.0"
+    "electron": "^3.0.9",
+    "electron-builder": "^20.36.2",
+    "rimraf": "^2.6.2"
   }
 }
