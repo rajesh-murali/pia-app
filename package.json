@@ -35,6 +35,7 @@
       "publish": [
         "github"
       ],
+      "certificateFile": "private/atnos.pfx",
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
     },
@@ -51,8 +52,8 @@
     }
   },
   "devDependencies": {
-    "electron": "^3.0.12",
-    "electron-builder": "^20.38.3",
+    "electron": "^3.0.13",
+    "electron-builder": "^20.38.4",
     "rimraf": "^2.6.2"
   }
 }
