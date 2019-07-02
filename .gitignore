@@ -1,6 +1,7 @@
-/.idea
-dist/
 node_modules/
-private/
+dist/
 releases/
+private/
 *.log
+.DS_Store
+.idea
