@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const { app, BrowserWindow } = electron
+// IF you want to enable automatic update uncomment the line below
 const updater = require('./updater')
 
 // Keep window state
@@ -84,15 +85,12 @@ if (process.platform === 'darwin') {
 
 const menu = electron.Menu.buildFromTemplate(template)
 
-
-
 function createWindow() {
   let winState = windowStateKeeper({
     defaultWidth: 900,
     defaultHeight: 600
   })
 
-  // electron.Menu.setApplicationMenu(menu)
   electron.Menu.setApplicationMenu(null)
 
   // Create the browser window.
@@ -137,6 +135,7 @@ function createWindow() {
     require('electron').shell.openExternal(url);
   });
 
+  // IF you want to enable automatic update uncomment the line below
   setTimeout(updater.check, 2000);
 }
 
