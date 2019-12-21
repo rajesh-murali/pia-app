@@ -92,7 +92,7 @@ function createWindow() {
         defaultHeight: 600
     })
 
-    electron.Menu.setApplicationMenu(menu)
+    electron.Menu.setApplicationMenu(null);
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
