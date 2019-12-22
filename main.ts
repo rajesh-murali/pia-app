@@ -136,7 +136,7 @@ function createWindow() {
         require('electron').shell.openExternal(url);
     });
 
-    setTimeout(updater.check, 2000);
+    //setTimeout(updater.check, 2000);
 }
 
 if (!gotTheLock) {
