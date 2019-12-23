@@ -74,8 +74,8 @@ if (process.platform === 'darwin') {
 var menu = electron.Menu.buildFromTemplate(template);
 function createWindow() {
     var winState = windowStateKeeper({
-        defaultWidth: 1680,
-        defaultHeight: 1024
+        defaultWidth: 900,
+        defaultHeight: 600
     });
     electron.Menu.setApplicationMenu(null);
     // Create the browser window.
