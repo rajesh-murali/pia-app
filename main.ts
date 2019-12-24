@@ -88,8 +88,8 @@ const menu = electron.Menu.buildFromTemplate(template)
 
 function createWindow() {
     let winState = windowStateKeeper({
-        defaultWidth: 900,
-        defaultHeight: 600
+        defaultWidth: 1920,
+        defaultHeight: 1024
     })
 
     electron.Menu.setApplicationMenu(null);
