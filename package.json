@@ -9,7 +9,7 @@
     "win": "electron-builder -w",
     "linux": "electron-builder -l",
     "win-cert": "electron-builder create-self-signed-cert -p atnos",
-    "publish-to-github": "electron-builder build -w -p always",
+    "publish-to-github": "electron-builder build -w -p onTagOrDraft",
     "clean": "rimraf ./dist/"
   },
   "author": "ATNOS",
