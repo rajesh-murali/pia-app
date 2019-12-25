@@ -32,9 +32,9 @@
     },
     "win": {
       "target": "nsis",
-      "publish": [
-        "github"
-      ],
+        "publish": [
+          "github"
+        ],
       "certificateFile": "private/atnos.pfx",
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
@@ -58,7 +58,6 @@
   },
   "dependencies": {
     "electron-log": "^3.0.9",
-    "electron-is-dev": "^1.1.0",
     "electron-updater": "^4.2.0",
     "electron-window-state": "^5.0.3"
   }
