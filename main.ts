@@ -1,3 +1,5 @@
+import {transports} from "electron-log";
+
 const electron = require('electron');
 // Module to control application life.
 const { app, BrowserWindow } = electron;
@@ -19,8 +21,9 @@ const gotTheLock = app.requestSingleInstanceLock();
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
+log.transports.file.level = 'info';
 autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = 'info';
+
 log.info('App starting...');
 
 let template = [

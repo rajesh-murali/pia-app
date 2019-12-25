@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var electron = require('electron');
 // Module to control application life.
 var app = electron.app, BrowserWindow = electron.BrowserWindow;
@@ -16,8 +18,8 @@ var gotTheLock = app.requestSingleInstanceLock();
 // This logging setup is not required for auto-updates to work,
 // but it sure makes debugging easier :)
 //-------------------------------------------------------------------
+log.transports.file.level = 'info';
 autoUpdater.logger = log;
-autoUpdater.logger.transports.file.level = 'info';
 log.info('App starting...');
 var template = [
     {

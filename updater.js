@@ -1,20 +1,21 @@
-const {dialog, BrowserWindow, ipcMain} = require('electron')
-const {autoUpdater} = require('electron-updater')
+const {dialog, BrowserWindow, ipcMain} = require('electron');
+const {autoUpdater} = require('electron-updater');
 
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
+const log = require('electron-log');
 
-autoUpdater.logger = require('electron-log')
-autoUpdater.logger.transports.file.level = 'info'
+log.transports.file.level = 'info';
+autoUpdater.logger = log;
 
-autoUpdater.autoDownload = false
+autoUpdater.autoDownload = false;
 
 exports.check = () => {
-  autoUpdater.checkForUpdates()
+  autoUpdater.checkForUpdates();
 
   autoUpdater.on('update-available', () => {
 
-    let downloadProgress = 0
+    let downloadProgress = 0;
 
     dialog.showMessageBox({
       type: 'info',
@@ -22,9 +23,9 @@ exports.check = () => {
       message: 'A new version of PIA is available. Do you want to update now?',
       buttons: ['Update', 'No']
     }, (buttonIndex) => {
-      if(buttonIndex !== 0) return
+      if(buttonIndex !== 0) return;
 
-      autoUpdater.downloadUpdate()
+      autoUpdater.downloadUpdate();
 
       let progressWin = new BrowserWindow({
         width: 350,
@@ -35,29 +36,29 @@ exports.check = () => {
         fullscreen: false,
         fullscreenable: false,
         resizable: false
-      })
+      });
 
       progressWin.loadURL(url.format({
         pathname: path.join(__dirname, 'renderer', 'progress.html'),
         protocol: 'file:',
         slashes: true
-      }))
+      }));
 
       progressWin.on('closed', () => {
         progressWin = null
-      })
+      });
 
       ipcMain.on('download-progress-request', (e) => {
         e.returnValue = downloadProgress
-      })
+      });
 
       autoUpdater.on('download-progress', (d) => {
         console.log(d.percent);
         downloadProgress = d.percent
-      })
+      });
 
       autoUpdater.on('update-downloaded', () => {
-        if (progressWin) progressWin.close()
+        if (progressWin) progressWin.close();
         dialog.showMessageBox({
           type: 'info',
           title: 'Update ready',
@@ -69,4 +70,4 @@ exports.check = () => {
       })
     })
   })
-}
+};
