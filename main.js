@@ -1,15 +1,24 @@
 var electron = require('electron');
 // Module to control application life.
 var app = electron.app, BrowserWindow = electron.BrowserWindow;
-var updater = require('./updater');
+var log = require('electron-log');
+var autoUpdater = require('electron-updater').autoUpdater;
 // Keep window state
 var windowStateKeeper = require('electron-window-state');
 var path = require('path');
 var url = require('url');
 var gotTheLock = app.requestSingleInstanceLock();
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-var mainWindow;
+//-------------------------------------------------------------------
+// Logging
+//
+// THIS SECTION IS NOT REQUIRED
+//
+// This logging setup is not required for auto-updates to work,
+// but it sure makes debugging easier :)
+//-------------------------------------------------------------------
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
 var template = [
     {
         label: 'Edit',
@@ -71,7 +80,15 @@ if (process.platform === 'darwin') {
         { role: 'front' }
     ];
 }
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+var mainWindow;
 var menu = electron.Menu.buildFromTemplate(template);
+function sendStatusToWindow(text) {
+    log.info(text);
+    mainWindow.webContents.send('message', text);
+}
+;
 function createWindow() {
     var winState = windowStateKeeper({
         defaultWidth: 1920,
@@ -102,7 +119,7 @@ function createWindow() {
         slashes: true
     }));
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
@@ -114,8 +131,28 @@ function createWindow() {
         e.preventDefault();
         require('electron').shell.openExternal(url);
     });
-    //setTimeout(updater.check, 2000);
 }
+autoUpdater.on('checking-for-update', function () {
+    sendStatusToWindow('Checking for update...');
+});
+autoUpdater.on('update-available', function (info) {
+    sendStatusToWindow('Update available.');
+});
+autoUpdater.on('update-not-available', function (info) {
+    sendStatusToWindow('Update not available.');
+});
+autoUpdater.on('error', function (err) {
+    sendStatusToWindow('Error in auto-updater. ' + err);
+});
+autoUpdater.on('download-progress', function (progressObj) {
+    var log_message = "Download speed: " + progressObj.bytesPerSecond;
+    log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    sendStatusToWindow(log_message);
+});
+autoUpdater.on('update-downloaded', function (info) {
+    sendStatusToWindow('Update downloaded');
+});
 if (!gotTheLock) {
     app.quit();
 }
@@ -131,7 +168,10 @@ else {
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
-    app.on('ready', createWindow);
+    app.on('ready', function () {
+        createWindow();
+        autoUpdater.checkForUpdatesAndNotify();
+    });
     // Quit when all windows are closed.
     app.on('window-all-closed', function () {
         // On OS X it is common for applications and their menu bar

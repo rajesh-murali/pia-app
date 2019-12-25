@@ -1,20 +1,29 @@
-const electron = require('electron')
+const electron = require('electron');
 // Module to control application life.
-const { app, BrowserWindow } = electron
-const updater = require('./updater')
+const { app, BrowserWindow } = electron;
+const log = require('electron-log');
+const {autoUpdater} = require('electron-updater');
 
 // Keep window state
-const windowStateKeeper = require('electron-window-state')
+const windowStateKeeper = require('electron-window-state');
 
-const path = require('path')
-const url = require('url')
-const gotTheLock = app.requestSingleInstanceLock()
+const path = require('path');
+const url = require('url');
+const gotTheLock = app.requestSingleInstanceLock();
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+//-------------------------------------------------------------------
+// Logging
+//
+// THIS SECTION IS NOT REQUIRED
+//
+// This logging setup is not required for auto-updates to work,
+// but it sure makes debugging easier :)
+//-------------------------------------------------------------------
+autoUpdater.logger = log;
+autoUpdater.logger.transports.file.level = 'info';
+log.info('App starting...');
 
-const template = [
+let template = [
     {
         label: 'Edit',
         submenu: [
@@ -46,7 +55,7 @@ const template = [
             {role: 'close'}
         ]
     }
-]
+];
 
 if (process.platform === 'darwin') {
     template.unshift({
@@ -58,7 +67,7 @@ if (process.platform === 'darwin') {
             {type: 'separator'},
             {role: 'quit'}
         ]
-    })
+    });
 
     // Edit menu
     template[1].submenu.push(
@@ -70,7 +79,7 @@ if (process.platform === 'darwin') {
                 {role: 'stopspeaking'}
             ]
         }
-    )
+    );
 
     // Window menu
     template[3].submenu = [
@@ -81,16 +90,22 @@ if (process.platform === 'darwin') {
         {role: 'front'}
     ]
 }
+// Keep a global reference of the window object, if you don't, the window will
+// be closed automatically when the JavaScript object is garbage collected.
+let mainWindow;
 
-const menu = electron.Menu.buildFromTemplate(template)
+const menu = electron.Menu.buildFromTemplate(template);
 
-
+function sendStatusToWindow(text) {
+    log.info(text);
+    mainWindow.webContents.send('message', text);
+};
 
 function createWindow() {
     let winState = windowStateKeeper({
         defaultWidth: 1920,
         defaultHeight: 1024
-    })
+    });
 
     electron.Menu.setApplicationMenu(null);
 
@@ -109,19 +124,19 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: false, plugins: true
         }
-    })
+    });
 
-    winState.manage(mainWindow)
+    winState.manage(mainWindow);
 
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'dist', 'pia', 'index.html'),
         protocol: 'file:',
         slashes: true
-    }))
+    }));
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    //mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
@@ -129,15 +144,35 @@ function createWindow() {
         // in an array if your app supports multi windows, this is the time
         // when you should delete the corresponding element.
         mainWindow = null
-    })
+    });
 
     mainWindow.webContents.on('new-window', function(e, url) {
         e.preventDefault();
         require('electron').shell.openExternal(url);
     });
-
-    //setTimeout(updater.check, 2000);
 }
+
+autoUpdater.on('checking-for-update', () => {
+    sendStatusToWindow('Checking for update...');
+})
+autoUpdater.on('update-available', (info) => {
+    sendStatusToWindow('Update available.');
+})
+autoUpdater.on('update-not-available', (info) => {
+    sendStatusToWindow('Update not available.');
+})
+autoUpdater.on('error', (err) => {
+    sendStatusToWindow('Error in auto-updater. ' + err);
+})
+autoUpdater.on('download-progress', (progressObj) => {
+    let log_message = "Download speed: " + progressObj.bytesPerSecond;
+    log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';
+    log_message = log_message + ' (' + progressObj.transferred + "/" + progressObj.total + ')';
+    sendStatusToWindow(log_message);
+})
+autoUpdater.on('update-downloaded', (info) => {
+    sendStatusToWindow('Update downloaded');
+});
 
 if (!gotTheLock) {
     app.quit()
@@ -145,15 +180,18 @@ if (!gotTheLock) {
     app.on('second-instance', (event, commandLine, workingDirectory) => {
         // Someone tried to run a second instance, we should focus our window.
         if (mainWindow) {
-            if (mainWindow.isMinimized()) mainWindow.restore()
+            if (mainWindow.isMinimized()) mainWindow.restore();
             mainWindow.focus()
         }
-    })
+    });
 
     // This method will be called when Electron has finished
     // initialization and is ready to create browser windows.
     // Some APIs can only be used after this event occurs.
-    app.on('ready', createWindow)
+    app.on('ready',function() {
+        createWindow();
+        autoUpdater.checkForUpdatesAndNotify();
+    } );
 
     // Quit when all windows are closed.
     app.on('window-all-closed', function () {
@@ -162,7 +200,7 @@ if (!gotTheLock) {
         if (process.platform !== 'darwin') {
             app.quit()
         }
-    })
+    });
 
     app.on('activate', function () {
         // On OS X it's common to re-create a window in the app when the
