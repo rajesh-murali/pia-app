@@ -1,10 +1,8 @@
-import {transports} from "electron-log";
-
 const electron = require('electron');
 // Module to control application life.
 const { app, BrowserWindow } = electron;
 const log = require('electron-log');
-const {autoUpdater} = require('electron-updater');
+const { autoUpdater } = require('electron-updater');
 
 // Keep window state
 const windowStateKeeper = require('electron-window-state');
