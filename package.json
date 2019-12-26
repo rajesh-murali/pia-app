@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "v2.3.0-beta1",
+  "version": "v2.3.0-beta2",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "win": "electron-builder -w",
     "linux": "electron-builder -l",
     "win-cert": "electron-builder create-self-signed-cert -p atnos",
-    "publish-to-github": "electron-builder build -w -p onTagOrDraft",
+    "publish-to-github": "electron-builder build -w -p always",
     "clean": "rimraf ./dist/"
   },
   "author": "ATNOS",
@@ -32,11 +32,12 @@
     },
     "win": {
       "target": "nsis",
-        "publish": [
-          "github"
-        ],
+        "publish": {
+          "provider": "github",
+          "releaseType": "prerelease"
+        },
       "certificateFile": "private/atnos.pfx",
-      "verifyUpdateCodeSignature": false,
+      "verifyUpdateCodeSignature": true,
       "publisherName": "ATNOS"
     },
     "linux": {
@@ -48,7 +49,7 @@
     "nsis": {
       "oneClick": false,
       "perMachine": true,
-      "allowToChangeInstallationDirectory": true
+      "allowToChangeInstallationDirectory": false
     }
   },
   "devDependencies": {
