@@ -32,10 +32,10 @@
     },
     "win": {
       "target": "nsis",
-        "publish": {
-          "provider": "github",
-          "releaseType": "prerelease"
-        },
+      "publish": {
+        "provider": "github",
+        "releaseType": "prerelease"
+      },
       "certificateFile": "private/atnos.pfx",
       "verifyUpdateCodeSignature": false,
       "publisherName": "ATNOS"
@@ -53,9 +53,9 @@
     }
   },
   "devDependencies": {
-    "electron": "^6.1.7",
+    "electron": "^7.1.7",
     "electron-builder": "^21.2.0",
-    "rimraf": "^2.7.1"
+    "rimraf": "^3.0.0"
   },
   "dependencies": {
     "electron-log": "^3.0.9",
