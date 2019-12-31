@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "v2.3.0-beta8",
+  "version": "v2.3.0-beta9",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
