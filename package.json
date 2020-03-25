@@ -1,6 +1,6 @@
 {
   "name": "PIA",
-  "version": "v2.3.0-beta13",
+  "version": "v2.3.0-beta14",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
@@ -53,7 +53,7 @@
     }
   },
   "devDependencies": {
-    "electron": "^8.1.1",
+    "electron": "^8.2.0",
     "electron-builder": "^22.4.1",
     "rimraf": "^3.0.2"
   },
