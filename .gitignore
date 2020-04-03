@@ -4,5 +4,6 @@ releases/
 private/
 *.log
 .DS_Store
+.env
 .idea
 /atnos.pfx

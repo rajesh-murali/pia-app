@@ -1,5 +1,6 @@
 {
   "name": "PIA",
+  "productName": "PIA",
   "version": "v2.3.0-beta14",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
@@ -20,6 +21,7 @@
   ],
   "build": {
     "appId": "com.atnos.pia",
+    "afterSign": "notarize.js",
     "directories": {
       "buildResources": ".",
       "output": "releases"
@@ -59,7 +61,8 @@
   },
   "dependencies": {
     "electron-log": "^4.1.1",
-    "electron-updater": "^4.2.5",
+    "electron-notarize": "^0.3.0",
+    "electron-updater": "^4.3.0",
     "electron-window-state": "^5.0.3"
   }
 }
