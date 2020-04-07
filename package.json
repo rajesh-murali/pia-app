@@ -20,6 +20,7 @@
   ],
   "build": {
     "appId": "com.atnos.pia",
+    "afterSign": "notarize.js",
     "directories": {
       "buildResources": ".",
       "output": "releases"
@@ -53,13 +54,14 @@
     }
   },
   "devDependencies": {
-    "electron": "^8.1.1",
+    "electron": "^8.2.1",
     "electron-builder": "^22.4.1",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "electron-log": "^4.1.0",
-    "electron-updater": "^4.2.5",
+    "electron-log": "^4.1.1",
+    "electron-notarize": "^0.3.0",
+    "electron-updater": "^4.3.0",
     "electron-window-state": "^5.0.3"
   }
 }
