@@ -106,7 +106,7 @@ function createWindow() {
         alwaysOnTop: false,
         fullscreen: false,
         kiosk: false,
-        icon: "$(__dirname)/icons/64x64.png",
+        icon: "icons/64x64.png",
         webPreferences: {
             nodeIntegration: false, plugins: true
         }
@@ -119,7 +119,7 @@ function createWindow() {
         slashes: true
     }));
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
