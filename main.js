@@ -48,7 +48,15 @@ var template = [
         role: 'window',
         submenu: [
             { role: 'minimize' },
-            { role: 'close' }
+            { role: 'close' },
+            { type: 'separator' },
+            {
+                label: "Toggle Dev Tools",
+                accelerator: "F12",
+                click: () => {
+                    mainWindow.webContents.toggleDevTools();
+                }
+            }
         ]
     }
 ];
