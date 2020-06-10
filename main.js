@@ -114,9 +114,9 @@ function createWindow() {
         alwaysOnTop: false,
         fullscreen: false,
         kiosk: false,
-        // icon: "$(__dirname)/icons/64x64.png",
+        icon: "icons/64x64.png",
         webPreferences: {
-            contextIsolation: false,
+            // contextIsolation: false,
             nodeIntegration: false,
             plugins: true
         }
