@@ -1,5 +1,5 @@
 {
-  "name": "PIA",
+  "name": "pia",
   "productName": "PIA",
   "version": "v2.4.0-beta02",
   "description": "Version Portable Outil PIA",
@@ -55,14 +55,14 @@
     }
   },
   "devDependencies": {
-    "electron": "^10.1.1",
-    "electron-builder": "^22.8.0",
+    "electron": "^10.1.2",
+    "electron-builder": "^22.8.1",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
     "electron-notarize": "^1.0.0",
-    "electron-updater": "^4.3.4",
+    "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3"
   }
 }
