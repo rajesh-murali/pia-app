@@ -55,12 +55,12 @@
     }
   },
   "devDependencies": {
-    "electron": "^8.5.2",
+    "electron": "^8.5.3",
     "electron-builder": "^22.9.1",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
-    "electron-log": "^4.2.4",
+    "electron-log": "^4.3.0",
     "electron-notarize": "^1.0.0",
     "electron-updater": "^4.3.5",
     "electron-window-state": "^5.0.3"
