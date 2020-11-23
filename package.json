@@ -1,7 +1,7 @@
 {
   "name": "pia",
   "productName": "PIA",
-  "version": "v2.4.0-beta02",
+  "version": "v2.4.0-beta03",
   "description": "Version Portable Outil PIA",
   "main": "main.js",
   "scripts": {
