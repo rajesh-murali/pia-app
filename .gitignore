@@ -7,3 +7,9 @@ private/
 .env
 .idea
 /atnos.pfx
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
