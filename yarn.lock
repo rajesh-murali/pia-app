@@ -1031,7 +1031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-builder@npm:^22.10.4":
+"electron-builder@npm:^22.9.1":
   version: 22.10.4
   resolution: "electron-builder@npm:22.10.4"
   dependencies:
@@ -2243,7 +2243,7 @@ __metadata:
   resolution: "pia@workspace:."
   dependencies:
     electron: ^11.2.1
-    electron-builder: ^22.10.4
+    electron-builder: ^22.9.1
     electron-log: ^4.3.1
     electron-notarize: ^1.0.0
     electron-updater: ^4.3.7
