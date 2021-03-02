@@ -137,10 +137,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^12.0.12":
-  version: 12.12.22
-  resolution: "@types/node@npm:12.12.22"
-  checksum: 7a7741d9a211151227b0c7e3d0a0002e037ab0a0bdf4f2e2c1c5d99153bd52a56669aab4c071ee9ebc6cb2806719c1d9b524b47511109d7191a836bed43dd833
+"@types/node@npm:^14.6.2":
+  version: 14.14.31
+  resolution: "@types/node@npm:14.14.31"
+  checksum: 635dc8a0898a923621e02ca179e17baa39fdfa44f0096fcc1b7046c9b32317e74a99956a7b45ca0e8069874f51f4e7873a418239a318a4b6e7936f6510ac5992
   languageName: node
   linkType: hard
 
@@ -1128,16 +1128,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^11.3.0":
-  version: 11.3.0
-  resolution: "electron@npm:11.3.0"
+"electron@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "electron@npm:12.0.0"
   dependencies:
     "@electron/get": ^1.0.1
-    "@types/node": ^12.0.12
+    "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: 8c46be2f5969d796ca0cde3d9f9cb8e21ea05edee0840676a97f2ddaa80e0d1a493ebb658383dd35ba26aaea6f036851f2a7627cd58db6444f4e4cb2ac249067
+  checksum: 10963f7ac118e5446f75fbfbc35c45e60ad1db1e1922432d2c3b7f0b0b25a0f4d728509b34f833e22521f4ab94bcb3c06607e735eedf3519ccb57c85aeb182e9
   languageName: node
   linkType: hard
 
@@ -2294,7 +2294,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pia@workspace:."
   dependencies:
-    electron: ^11.3.0
+    electron: ^12.0.0
     electron-builder: ^22.10.5
     electron-log: ^4.3.2
     electron-notarize: ^1.0.0
