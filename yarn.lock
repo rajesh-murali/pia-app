@@ -1128,16 +1128,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^12.0.2":
-  version: 12.0.2
-  resolution: "electron@npm:12.0.2"
+"electron@npm:^12.0.4":
+  version: 12.0.4
+  resolution: "electron@npm:12.0.4"
   dependencies:
     "@electron/get": ^1.0.1
     "@types/node": ^14.6.2
     extract-zip: ^1.0.3
   bin:
     electron: cli.js
-  checksum: 77f69f651309151748913fe3b57bcfc82f814142d7ccc8f9157c2ba7647b08ab9ae7d38b3231075ecce348422f0ce4351879e5f0e76095a8c8c304d08c2983d0
+  checksum: 262f2408951afda1923d85c85a1c1e7dbe3ea94b8f1c57cb17677732b797f117c3ef9c70606b4ef759a4db20f4cfe9077482a605c5a7c6dce5f463065cfe84ce
   languageName: node
   linkType: hard
 
@@ -2294,7 +2294,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pia@workspace:."
   dependencies:
-    electron: ^12.0.2
+    electron: ^12.0.4
     electron-builder: ^22.10.5
     electron-log: ^4.3.4
     electron-notarize: ^1.0.0
